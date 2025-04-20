@@ -24,8 +24,15 @@ function App() {
   //   client.models.Todo.delete({ id })
   // }
 
-  function setToDone(id: string) {
-    client.models.Todo.update({ id, isDone: true });
+  // function setToDone(id: string) {
+  //   client.models.Todo.update({ id, isDone: true });
+  // }
+
+  function toggleIsDone(id: string) {
+    const todo = todos.find((todo) => todo.id === id);
+    if (todo) {
+      client.models.Todo.update({ id, isDone: !todo.isDone });
+    }
   }
   
   return (
@@ -38,7 +45,8 @@ function App() {
           // onClick={() => deleteTodo(todo.id)} 
           //change style in strike when isdone is true
           style={{ textDecoration: todo.isDone ? "line-through" : "none" }}
-          onClick={() => setToDone(todo.id)}
+          //onClick={() => setToDone(todo.id)}
+          onClick={() => toggleIsDone(todo.id)}
           key={todo.id}>{todo.content}
           </li>
         ))}
