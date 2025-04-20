@@ -36,6 +36,8 @@ function App() {
         {todos.map((todo) => (
           <li 
           // onClick={() => deleteTodo(todo.id)} 
+          //change style in strike when isdone is true
+          style={{ textDecoration: todo.isDone ? "line-through" : "none" }}
           onClick={() => setToDone(todo.id)}
           key={todo.id}>{todo.content}
           </li>
