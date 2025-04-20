@@ -24,6 +24,10 @@ function App() {
     client.models.Todo.delete({ id })
   }
 
+  function setToDone(id: string) {
+    client.models.Todo.update({ id, isDone: true });
+  }
+  
   return (
     <main>
       <h1>{user?.signInDetails?.loginId}'s' todos</h1>
@@ -31,7 +35,8 @@ function App() {
       <ul>
         {todos.map((todo) => (
           <li 
-          onClick={() => deleteTodo(todo.id)}
+          // onClick={() => deleteTodo(todo.id)} 
+          onClick={() => setToDone(todo.id)}
           key={todo.id}>{todo.content}
           </li>
         ))}
