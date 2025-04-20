@@ -20,9 +20,9 @@ function App() {
   }
 
   
-  function deleteTodo(id: string) {
-    client.models.Todo.delete({ id })
-  }
+  // function deleteTodo(id: string) {
+  //   client.models.Todo.delete({ id })
+  // }
 
   function setToDone(id: string) {
     client.models.Todo.update({ id, isDone: true });
