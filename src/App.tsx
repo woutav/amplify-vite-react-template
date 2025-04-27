@@ -20,9 +20,9 @@ function App() {
   }
 
   
-  // function deleteTodo(id: string) {
-  //   client.models.Todo.delete({ id })
-  // }
+  function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
 
   // function setToDone(id: string) {
   //   client.models.Todo.update({ id, isDone: true });
@@ -41,14 +41,13 @@ function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li 
-          // onClick={() => deleteTodo(todo.id)} 
-          //change style in strike when isdone is true
-          style={{ textDecoration: todo.isDone ? "line-through" : "none" }}
-          //onClick={() => setToDone(todo.id)}
-          onClick={() => toggleIsDone(todo.id)}
-          key={todo.id}>{todo.content}
-          </li>
+            <li key={todo.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "right" }}>
+            <span style={{ textDecoration: todo.isDone ? "line-through" : "none" }}>{todo.content}</span>
+            <button onClick={() => toggleIsDone(todo.id)}>
+              {todo.isDone ? "Mark as Undone" : "Mark as Done"}
+            </button>
+            <button onClick={() => deleteTodo(todo.id)}>❌</button>
+            </li>
         ))}
       </ul>
       <div>
