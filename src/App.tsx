@@ -34,6 +34,19 @@ function App() {
       client.models.Todo.update({ id, isDone: !todo.isDone });
     }
   }
+  const [newCategory, setNewCategory] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
+
+  function addCategory() {
+    if (newCategory && !categories.includes(newCategory)) {
+      setCategories([...categories, newCategory]);
+      setNewCategory("");
+    }
+  }
+
+  function assignCategoryToTodo(id: string, category: string) {
+    client.models.Todo.update({ id, category });
+  }
   
   return (
     <main>
